@@ -1,0 +1,581 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10 Meses Juntos 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffb6c1, #ffd1dc, #cce7ff);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #4a2c2a;
+    }.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: fadeIn 2s ease;
+}
+
+h2 {
+  font-weight: normal;
+  margin-bottom: 30px;
+  animation: fadeIn 3s ease;
+}
+
+.heart {
+  font-size: 4rem;
+  animation: pulse 1.5s infinite;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  animation: slideUp 1.5s ease;
+}
+
+button {
+  background: linear-gradient(135deg, #ff6f91, #ff9671);
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.hidden {
+  display: none;
+}
+
+.message {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.floating-hearts span {
+  position: fixed;
+  bottom: -20px;
+  font-size: 1.5rem;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 0.8; }
+  to { transform: translateY(-120vh); opacity: 0; }
+}
+
+audio {
+  display: none;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.photo-heart {
+  width: 160px;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  clip-path: path('M80 140 C20 90, 0 60, 40 40 C60 20, 80 40, 80 40 C80 40, 100 20, 120 40 C160 60, 140 90, 80 140 Z');
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  animation: pulse 2s infinite;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 400px;
+  text-align: center;
+  animation: slideUp 0.5s ease;
+}
+
+.close {
+  margin-top: 15px;
+  background: #ff6f91;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.letter {
+  background: linear-gradient(135deg, #fff0f5, #ffffff);
+  border-radius: 25px;
+  padding: 30px;
+  margin-top: 30px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.letter h2 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin-bottom: 15px;
+}
+
+.letter p {
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.counter {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+}
+
+.stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.night .stars { opacity: 0.6; }
+
+.promise {
+  background: linear-gradient(135deg, #ffe4ec, #ffffff);
+  border-radius: 25px;
+  padding: 25px;
+  margin-top: 30px;
+  text-align: center;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.promise button {
+  margin-top: 15px;
+  background: linear-gradient(135deg, #c77dff, #ffafcc);
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+.timeline {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.event {
+  background: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  animation: slideUp 1s ease;
+}
+
+.secret {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.secret button {
+  background: linear-gradient(135deg, #ffb703, #fb8500);
+}
+
+.hidden-message {
+  display: none;
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff6f91;
+  color: white;
+  padding: 12px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 2000;
+}
+
+.daily {
+  background: linear-gradient(135deg, #e0f7ff, #ffffff);
+  border-radius: 25px;
+  padding: 25px;
+  margin-top: 30px;
+  text-align: center;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.quiz {
+  margin-top: 30px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 25px;
+  padding: 25px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.fireworks {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 3000;
+}
+
+  </style>
+</head>
+<body> 
+<!-- Música con controles, se puede reproducir manualmente -->
+<audio id="musica" loop>
+   <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+  <div class="container">
+    <div class="heart">💖</div>
+    <h1>Feliz Aniversario, Marling 💖</h1>
+    <h2>10 meses juntos & 6 meses de novios ✨<br>Para ti, Marling 🌹</h2><div class="card">
+  <p class="message">
+    Desde que llegaste a mi vida, todo tiene más color, más sentido y más amor.
+    Hoy celebramos no solo el tiempo, sino cada risa, cada abrazo y cada sueño que compartimos.
+  </p>
+</div>
+
+<div class="card">
+  <h3>💌 Un mensaje especial</h3>
+  <button onclick="mostrarMensaje()">Presiona aquí, amor</button>
+  <p id="mensaje" class="message hidden">
+    Gracias por ser mi lugar seguro, mi alegría diaria y mi más bonita casualidad.
+    Prometo seguir eligiéndote hoy, mañana y siempre. Te amo más de lo que las palabras pueden decir 💕
+  </p>
+</div>
+
+<div class="card">
+  <h3>🌹 Razones por las que te amo</h3>
+  <button onclick="razonAleatoria()">Descubrir una razón</button>
+  <p id="razon" class="message"></p>
+</div>
+
+<div class="card">
+  <h3>📸 Nuestros recuerdos</h3>
+  <p class="message">Cada foto es un pedacito de nuestro amor 💕</p>
+  <div class="gallery">
+    <div class="photo-heart" style="background-image: url('foto1.jpg');" onclick="abrirModal('6 de abril 💕','El día que empezamos a estar juntos. Sin saberlo, ese día comenzó la historia más bonita de mi vida contigo.')"></div>
+    <div class="photo-heart" style="background-image: url('foto2.jpg');" onclick="abrirModal('Nuestro primer beso 💋','Ese beso selló lo que el corazón ya sabía: que eras y siempre serás mi amor.')"></div>
+    <div class="photo-heart" style="background-image: url('foto3.jpg');" onclick="abrirModal('6 de julio de 2025 💖','El día que nos hicimos novios oficialmente. Desde entonces, elegirte ha sido mi decisión favorita.')"></div>
+  </div>
+    <div class="photo-heart" style="background-image: url('foto2.jpg');"></div>
+    <div class="photo-heart" style="background-image: url('foto3.jpg');"></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>✨ Nuestro tiempo juntos</h3>
+  <p class="message">10 meses compartiendo momentos increíbles</p>
+  <p class="message">6 meses llamándonos novios y soñando en grande</p>
+</div>
+
+<div class="card">
+  <h3>⏳ Nuestro tiempo real juntos</h3>
+  <div class="counter" id="contador"></div>
+</div>
+
+<div class="letter">
+  <h2>💌 Carta para ti, mi amor</h2>
+  <p>
+    Desde aquel <strong>6 de abril</strong> supe que algo especial estaba naciendo entre nosotros. Sin promesas,
+    sin planes, solo dos corazones encontrándose poco a poco. Luego llegó ese beso que lo cambió todo,
+    y finalmente el <strong>6 de julio de 2025</strong>, el día en que decidimos llamarnos novios y caminar juntos.
+  </p>
+  <p>
+    Hoy celebramos <strong>10 meses juntos</strong> y <strong>6 meses de novios</strong>. Gracias por ser mi lugar seguro,
+    mi alegría diaria y mi persona favorita en este mundo.
+  </p>
+  <p style="text-align:center; font-weight:bold; margin-top:20px;">
+    Te amo hoy, mañana y siempre,  💖
+  </p>
+
+  <div style="text-align:center; margin-top:30px;">
+    <button onclick="finalCelebracion()">💞 Finalizar nuestra historia 💞</button>
+  </div>
+</div>
+
+<div class="promise">
+  <h3>💍 Mi promesa para ti</h3>
+  <p class="message">Prometo cuidarte, respetarte y amarte incluso en los días difíciles.</p>
+  <button onclick="mostrarPromesa()">Aceptar promesa 💖</button>
+  <p id="textoPromesa" class="message hidden">Esta historia apenas comienza… y quiero escribirla contigo para siempre ✨</p>
+</div>
+</div>
+
+<div class="timeline">
+  <h3>📖 Nuestra historia</h3>
+  <div class="event">💗 <strong>6 de abril:</strong> Empezamos a estar juntos, sin saber que sería para siempre.</div>
+  <div class="event">💋 <strong>Primer beso:</strong> El momento donde nuestros corazones hablaron.</div>
+  <div class="event">💖 <strong>6 de julio 2025:</strong> Nos hicimos novios oficialmente.</div>
+  <div class="event">✨ <strong>Hoy:</strong> Celebramos nuestro amor.</div>
+</div>
+
+<div class="secret">
+  <h3>🔐 Mensaje secreto</h3>
+  <button onclick="revelarSecreto()">Tócalo 3 veces 💕</button>
+  <div id="secreto" class="hidden-message">Marling, quiero que seas mi siempre 💍💖</div>
+</div>
+
+<div class="daily">
+  <h3>💖 Mensaje del día</h3>
+  <p id="mensajeDia" class="message"></p>
+  <button onclick="nuevoMensaje()">Otro mensaje 💕</button>
+</div>
+
+<div class="quiz">
+  <h3>🎮 Mini juego del amor</h3>
+  <p class="message">¿Cuánto nos amamos?</p>
+  <button onclick="juegoAmor()">Descubrir 💘</button>
+  <p id="resultadoJuego" class="message"></p>
+</div>
+
+<canvas class="fireworks" id="fireworks"></canvas>
+
+<footer>
+  Hecho con todo mi amor 💗 solo para ti
+</footer>
+
+  </div>  <div class="floating-hearts" id="hearts"></div>  <script>
+    function mostrarMensaje() {
+      document.getElementById('mensaje').classList.remove('hidden');
+    }
+
+    const razones = [
+      "Porque tu sonrisa ilumina mis días",
+      "Porque me haces sentir en casa",
+      "Porque crees en mí incluso cuando yo dudo",
+      "Porque tu abrazo lo cura todo",
+      "Porque contigo todo es mejor",
+      "Porque eres mi persona favorita",
+      "Porque haces mi mundo más bonito"
+    ];
+
+    function razonAleatoria() {
+      const r = razones[Math.floor(Math.random() * razones.length)];
+      document.getElementById('razon').textContent = r;
+    }
+
+    function crearCorazon() {
+      const heart = document.createElement('span');
+      heart.textContent = '💗';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.getElementById('hearts').appendChild(heart);
+
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    setInterval(crearCorazon, 600);
+
+    const inicio = new Date('2025-04-06T00:00:00');
+
+    function actualizarContador() {
+      const ahora = new Date();
+      let diff = ahora - inicio;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff %= (1000 * 60 * 60 * 24);
+      const horas = Math.floor(diff / (1000 * 60 * 60));
+      diff %= (1000 * 60 * 60);
+      const minutos = Math.floor(diff / (1000 * 60));
+
+      document.getElementById('contador').textContent = ${dias} días, ${horas} horas y ${minutos} minutos amándonos 💕;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  
+    function finalCelebracion() {
+      for (let i = 0; i < 50; i++) {
+        setTimeout(crearCorazon, i * 100);
+      }
+      alert('Gracias por estos meses tan hermosos, Marling 💖
+Que este amor siga creciendo para siempre ✨');
+    }
+  
+    function mostrarPromesa() {
+      document.getElementById('textoPromesa').classList.remove('hidden');
+      document.body.classList.add('night');
+      lanzarConfetti();
+    }
+
+    function lanzarConfetti() {
+      for (let i = 0; i < 80; i++) {
+        const c = document.createElement('div');
+        c.classList.add('confetti');
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = hsl(${Math.random() * 360}, 80%, 70%);
+        c.style.animationDuration = (3 + Math.random() * 2) + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+      }
+    }
+
+    function finalCelebracion() {
+      for (let i = 0; i < 60; i++) {
+        setTimeout(crearCorazon, i * 80);
+      }
+      lanzarConfetti();
+      alert('Gracias por existir en mi vida, Marling 💖
+Feliz aniversario ✨');
+    }
+  
+    let taps = 0;
+    function revelarSecreto() {
+      taps++;
+      if (taps === 3) {
+        document.getElementById('secreto').style.display = 'block';
+        lanzarConfetti();
+      }
+    }
+
+    const audio = document.querySelector('audio');
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  
+    const mensajes = [
+      'Eres lo mejor que me pasó en la vida, Marling 💖',
+      'Mi lugar favorito siempre será a tu lado 🌹',
+      'Gracias por existir y amarme ✨',
+      'Nuestro amor es mi mayor orgullo 💕',
+      'Contigo todo tiene sentido 💗'
+    ];
+
+    function nuevoMensaje() {
+      const m = mensajes[Math.floor(Math.random() * mensajes.length)];
+      document.getElementById('mensajeDia').textContent = m;
+    }
+    nuevoMensaje();
+
+    function juegoAmor() {
+      const nivel = Math.floor(Math.random() * 100) + 1;
+      document.getElementById('resultadoJuego').textContent = Nuestro amor está al ${nivel}% 💖;
+      iniciarFuegos();
+    }
+
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    function iniciarFuegos() {
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => explotar(Math.random()*canvas.width, Math.random()*canvas.height/2), i*100);
+      }
+    }
+
+    function explotar(x, y) {
+      for (let i = 0; i < 30; i++) {
+        ctx.fillStyle = hsl(${Math.random()*360},100%,70%);
+        ctx.beginPath();
+        ctx.arc(x + Math.random()*60-30, y + Math.random()*60-30, 3, 0, Math.PI*2);
+        ctx.fill();
+      }
+      setTimeout(() => ctx.clearRect(0,0,canvas.width,canvas.height), 800);
+    }
+  </script>  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h3 id="modalTitulo"></h3>
+      <p class="message" id="modalTexto"></p>
+      <button class="close" onclick="cerrarModal()">Cerrar 💗</button>
+    </div>
+  </div>  <script>
+    function abrirModal(titulo, texto) {
+      document.getElementById('modalTitulo').textContent = titulo;
+      document.getElementById('modalTexto').textContent = texto;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>  <div class="music-control" onclick="toggleMusic()">🎵</div></body>
+</html>
